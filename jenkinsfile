@@ -1,0 +1,39 @@
+pipeline{
+ agent any
+ environment {
+         ALLURE = 'allure'
+         VALUE_ONE = '1'
+         VALUE_TWO = '2'
+         VALUE_THREE = '3'
+ }
+ options {
+             timeout(time: 2, unit: 'MINUTES')
+             timestamps()
+             buildDiscarder(
+                     logRotator(
+                             numToKeepStr: '4',
+                             artifactNumToKeepStr: '30',
+                             daysToKeepStr: '2',
+                             artifactDaysToKeepStr: '15'
+                     ))
+ }
+ stages{
+   stage('Setup parameters') {
+              steps {
+              echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                  script {
+                      properties([
+                              parameters([choice(choices: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'], name: 'CHOICE'),
+                                          booleanParam(defaultValue: true, description: '', name: 'IS_ENABLED'),
+                                          string(name: 'COUNT', defaultValue: '0', description: 'Please set seconds count'),
+                                          string(name: 'DATA_PROVIDER_STRING', defaultValue: '', description: 'Please set seconds count by comma')
+
+                              ])
+                      ])
+
+                  }
+
+              }
+          }
+ }
+}
