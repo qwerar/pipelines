@@ -22,8 +22,9 @@ pipeline {
  stages{
    stage('Setup parameters') {
               steps {
-              echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
               firstFuncion("George")
+              echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+
                   script {
                       properties([
                               parameters([choice(choices: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'], name: 'CHOICE'),
