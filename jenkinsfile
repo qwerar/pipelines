@@ -1,3 +1,4 @@
+@Library('common-lib')
 pipeline{
  agent any
  environment {
@@ -21,6 +22,7 @@ pipeline{
    stage('Setup parameters') {
               steps {
               echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
+              firstFuncion("George")
                   script {
                       properties([
                               parameters([choice(choices: ['ONE', 'TWO', 'THREE', 'FOUR', 'FIVE'], name: 'CHOICE'),
