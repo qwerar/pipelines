@@ -22,7 +22,7 @@ pipeline {
  stages{
    stage('Setup parameters') {
               steps {
-              firstFuncion("George")
+              first("George")
               echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
 
                   script {
