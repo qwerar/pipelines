@@ -22,7 +22,7 @@ pipeline {
  stages{
    stage('Setup parameters') {
               steps {
-              first.name("George")
+             script{ first.name("George")}
            /*    first.sum(5,5)
               first.mult(10,10) */
               echo "Running ${env.BUILD_ID} on ${env.JENKINS_URL}"
