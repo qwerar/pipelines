@@ -1,5 +1,6 @@
 @Library('common-lib')
-pipeline{
+
+pipeline {
  agent any
  environment {
          ALLURE = 'allure'
